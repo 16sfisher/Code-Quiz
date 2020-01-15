@@ -1,0 +1,43 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px rebeccapurple;
+    padding: 15px;
+}
+
+.start-btn {
+    
+    
+  }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+button:hover {
+    background-color: rebeccapurple;
+}
+
+p {
+    line-height: 150%;
+    padding: 15px;
+}
+
+h1 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
