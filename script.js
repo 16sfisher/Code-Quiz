@@ -6,6 +6,10 @@ var button3;
 var correctIncorrectDiv = document.getElementById("correctIncorrect");
 var timerMsg;
 var timer;
+var val = 75;
+var endVal = 0;
+var numberCorrect = 0;
+var score = 0;
 
 var questionsIndex = 0;
 
@@ -42,8 +46,7 @@ var questions = [
 document.getElementById("start-btn").addEventListener("click", startQuiz);
 
 
-var val = 75;
-var endVal = 0;
+
 
 function startQuiz() {
     console.log("Quiz started")
@@ -51,122 +54,122 @@ function startQuiz() {
         timerMsg = "00:" + (val >= 10 ? val : "0" + val);
         document.querySelector(".time-remaining").textContent = "Time remaining: " + timerMsg;
     }
-    
+
     timer = setInterval(function () {
         myCallback(val);
         if (val-- <= 0) {
-            clearInterval(timer);
+            showEndScreen();
         }
     }, 1000);
 
 
     newQDiv = document.createElement("DIV");
     newQDiv.setAttribute("id", "questionTitle");
-    
+
     document.getElementById("container").appendChild(newQDiv);
     // button0
     button0 = document.createElement("BUTTON");
     button0.setAttribute("id", "button0");
-    
+
     document.getElementById("container").appendChild(button0);
     //button1
     button1 = document.createElement("BUTTON");
     button1.setAttribute("id", "button1");
-    
+
     document.getElementById("container").appendChild(button1);
     //button2
     button2 = document.createElement("BUTTON");
     button2.setAttribute("id", "button2");
-   
+
     document.getElementById("container").appendChild(button2);
     //button3
     button3 = document.createElement("BUTTON");
     button3.setAttribute("id", "button3");
-    
+
     document.getElementById("container").appendChild(button3);
 
-//button 0 click event
+    //button 0 click event
     $("#button0").click(function (event) {
         var chosenAnswer = questions[questionsIndex].choices[0];
         var actualAnswer = questions[questionsIndex].answer;
-        if (chosenAnswer === actualAnswer ) {
-          //Correct
-          //set element text to "Correct" or something
-          correctIncorrectDiv.innerHTML = "Correct";
+        if (chosenAnswer === actualAnswer) {
+            //Correct
+            //set element text to "Correct" or something
+            correctIncorrectDiv.innerHTML = "Correct";
         } else {
-          //Not Correct
-        //set element text to "Not Correct" or something
-        correctIncorrectDiv.innerHTML = "Incorrect";
-        val -= 15;
+            //Not Correct
+            //set element text to "Not Correct" or something
+            correctIncorrectDiv.innerHTML = "Incorrect";
+            val -= 15;
         }
 
         questionsIndex++;
 
         setQuestionandAnswerText();
         //Move on to next question
-        });
+    });
     //button 1 click event
     $("#button1").click(function (event) {
         var chosenAnswer = questions[questionsIndex].choices[1];
         var actualAnswer = questions[questionsIndex].answer;
-        if (chosenAnswer == actualAnswer ) {
-          //Correct
-          //set element text to "Correct" or something
-          correctIncorrectDiv.innerHTML = "Correct";
+        if (chosenAnswer == actualAnswer) {
+            //Correct
+            //set element text to "Correct" or something
+            correctIncorrectDiv.innerHTML = "Correct";
         } else {
-          //Not Correct
-        //set element text to "Not Correct" or something
-        correctIncorrectDiv.innerHTML = "Incorrect";
-        val -= 15;
+            //Not Correct
+            //set element text to "Not Correct" or something
+            correctIncorrectDiv.innerHTML = "Incorrect";
+            val -= 15;
         }
 
         questionsIndex++;
 
         setQuestionandAnswerText();
         //Move on to next question
-        });
+    });
 
-        // button 2
-        $("#button2").click(function (event) {
-            var chosenAnswer = questions[questionsIndex].choices[2];
-            var actualAnswer = questions[questionsIndex].answer;
-            if (chosenAnswer == actualAnswer ) {
-              //Correct
-              //set element text to "Correct" or something
-              correctIncorrectDiv.innerHTML = "Correct";
-            } else {
-              //Not Correct
+    // button 2
+    $("#button2").click(function (event) {
+        var chosenAnswer = questions[questionsIndex].choices[2];
+        var actualAnswer = questions[questionsIndex].answer;
+        if (chosenAnswer == actualAnswer) {
+            //Correct
+            //set element text to "Correct" or something
+            correctIncorrectDiv.innerHTML = "Correct";
+        } else {
+            //Not Correct
             //set element text to "Not Correct" or something
             correctIncorrectDiv.innerHTML = "Incorrect";
             val -= 15;
-            }
-    
-            questionsIndex++;
-    
-            setQuestionandAnswerText();
-            //Move on to next question
-            });
+        }
 
-            //button 3
-            $("#button3").click(function (event) {
-                var chosenAnswer = questions[questionsIndex].choices[3];
-                var actualAnswer = questions[questionsIndex].answer;
-                if (chosenAnswer == actualAnswer ) {
-                  //Correct
-                  //set element text to "Correct" or something
-                  correctIncorrectDiv.innerHTML = "Correct";
-                } else {
-                  //Not Correct
-                //set element text to "Not Correct" or something
-                correctIncorrectDiv.innerHTML = "Incorrect";
-                val -= 15;
-                }
-        
-                questionsIndex++;
-        
-                setQuestionandAnswerText();
-                //Move on to next question
-                });
+        questionsIndex++;
+
+        setQuestionandAnswerText();
+        //Move on to next question
+    });
+
+    //button 3
+    $("#button3").click(function (event) {
+        var chosenAnswer = questions[questionsIndex].choices[3];
+        var actualAnswer = questions[questionsIndex].answer;
+        if (chosenAnswer == actualAnswer) {
+            //Correct
+            //set element text to "Correct" or something
+            correctIncorrectDiv.innerHTML = "Correct";
+        } else {
+            //Not Correct
+            //set element text to "Not Correct" or something
+            correctIncorrectDiv.innerHTML = "Incorrect";
+            val -= 15;
+        }
+
+        questionsIndex++;
+
+        setQuestionandAnswerText();
+        //Move on to next question
+    });
 
     //Next i need to create make content visible in html or completely create new html elements
     setQuestionandAnswerText();
@@ -174,28 +177,40 @@ function startQuiz() {
 };
 
 function setQuestionandAnswerText() {
-    
-    newQDiv.innerHTML = questions[questionsIndex].title;
-    
-    // button0
-    
-    button0.innerHTML = questions[questionsIndex].choices[0];
-    
-    //button1
-   
-    button1.innerHTML = questions[questionsIndex].choices[1];
-    
-    //button2
-    
-    button2.innerHTML = questions[questionsIndex].choices[2];
-    
-    //button3
-    
-    button3.innerHTML = questions[questionsIndex].choices[3];
-    
+
+    if (questionsIndex > 4) {
+        showEndScreen();
+    }
+    else {
+
+        newQDiv.innerHTML = questions[questionsIndex].title;
+
+        // button0
+
+        button0.innerHTML = questions[questionsIndex].choices[0];
+
+        //button1
+
+        button1.innerHTML = questions[questionsIndex].choices[1];
+
+        //button2
+
+        button2.innerHTML = questions[questionsIndex].choices[2];
+
+        //button3
+
+        button3.innerHTML = questions[questionsIndex].choices[3];
+    }
+
 };
 
-if (questionsIndex > 3){
-    stop(timerMsg);
+function showEndScreen() {
+
+    clearInterval(timer);
+    score = val;
+    console.log(score);
+
+    alert("game over");
+
 }
 
