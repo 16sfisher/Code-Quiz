@@ -21,7 +21,7 @@
             
         </header>
     
-    <div class="container">
+    <div id="container" class="container">
         
         <h1 id="startH1">JavaScript Code Quiz</h1>
         <div class="hide" id="question-container">
@@ -43,6 +43,7 @@
     <div>
         <button id="start-btn" class="start-btn" onclick= "this.style.visibility ='hidden'; document.getElementById('start-paragraph').style.visibility = 'hidden'; document.getElementById('startH1').style.visibility = 'hidden' "> Start Game</button>
     </div>
+    <div id="correctIncorrect" style="margin-right: 15px;"></div>
     </div>
    <div class="timer" id="start-timer"></div> 
    <div class="score" id="score-keeper"></div>
@@ -53,6 +54,6 @@
    </form>
     
 
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>	
